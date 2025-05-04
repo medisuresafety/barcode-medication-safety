@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medication List</title>
+    <title>Medication Database - MediSure</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Medication List</h1>
+        <h1>Medication Database</h1>
+        <p>Find information about medications and their corresponding barcodes.</p>
     </header>
 
     <nav>
@@ -19,12 +20,155 @@
         </ul>
     </nav>
 
-    <section id="medication-list">
-        <ul>
-            <li><a href="#medication1">Carvedilol (Carvid) - Barcode: 480778841769</a></li>
-            <li><a href="#medication2">Paracetamol - Barcode: 123456789</a></li>
-            <li><a href="#medication3">Ibuprofen - Barcode: 987654321</a></li>
-        </ul>
+    <section>
+        <h2>List of Medications</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Medication Name</th>
+                    <th>Brand Name</th>
+                    <th>Barcode ID</th>
+                    <th>Dosage</th>
+                    <th>Indication</th>
+                    <th>Route</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Diabetes Medications -->
+                <tr>
+                    <td>Metformin</td>
+                    <td>Glucophage</td>
+                    <td>000780229980</td>
+                    <td>500mg, 850mg, 1000mg</td>
+                    <td>Type 2 Diabetes</td>
+                    <td>Oral</td>
+                </tr>
+                <tr>
+                    <td>Glipizide</td>
+                    <td>Glucotrol</td>
+                    <td>000680391210</td>
+                    <td>5mg, 10mg</td>
+                    <td>Type 2 Diabetes</td>
+                    <td>Oral</td>
+                </tr>
+                <tr>
+                    <td>Insulin Glargine</td>
+                    <td>Lantus</td>
+                    <td>003138861025</td>
+                    <td>100 units/ml</td>
+                    <td>Type 1 & 2 Diabetes</td>
+                    <td>Subcutaneous</td>
+                </tr>
+
+                <!-- Fever Medications -->
+                <tr>
+                    <td>Paracetamol</td>
+                    <td>Panadol</td>
+                    <td>050607191507</td>
+                    <td>500mg</td>
+                    <td>Fever, Pain Relief</td>
+                    <td>Oral</td>
+                </tr>
+                <tr>
+                    <td>Ibuprofen</td>
+                    <td>Advil</td>
+                    <td>050607191999</td>
+                    <td>200mg, 400mg</td>
+                    <td>Fever, Pain Relief, Inflammation</td>
+                    <td>Oral</td>
+                </tr>
+                <tr>
+                    <td>Aspirin</td>
+                    <td>Ascriptin</td>
+                    <td>003638309568</td>
+                    <td>81mg, 325mg</td>
+                    <td>Fever, Pain Relief, Inflammation</td>
+                    <td>Oral</td>
+                </tr>
+
+                <!-- Cough Medications -->
+                <tr>
+                    <td>Dextromethorphan</td>
+                    <td>Robitussin</td>
+                    <td>030521042432</td>
+                    <td>10mg/5ml</td>
+                    <td>Cough Suppressant</td>
+                    <td>Oral</td>
+                </tr>
+                <tr>
+                    <td>Guaifenesin</td>
+                    <td>Mucinex</td>
+                    <td>030521042435</td>
+                    <td>200mg, 400mg</td>
+                    <td>Expectorant</td>
+                    <td>Oral</td>
+                </tr>
+                <tr>
+                    <td>Diphenhydramine</td>
+                    <td>Benadryl</td>
+                    <td>030521042434</td>
+                    <td>25mg, 50mg</td>
+                    <td>Allergy Relief, Cough Suppressant</td>
+                    <td>Oral</td>
+                </tr>
+
+                <!-- Hypertension Medications -->
+                <tr>
+                    <td>Carvedilol</td>
+                    <td>Carvid</td>
+                    <td>480778841769</td>
+                    <td>3.125mg, 6.25mg, 12.5mg, 25mg</td>
+                    <td>Hypertension, Heart Failure</td>
+                    <td>Oral</td>
+                </tr>
+                <tr>
+                    <td>Losartan</td>
+                    <td>Cozaar</td>
+                    <td>078745362941</td>
+                    <td>50mg, 100mg</td>
+                    <td>Hypertension</td>
+                    <td>Oral</td>
+                </tr>
+
+                <!-- Pain Relief Medications -->
+                <tr>
+                    <td>Acetaminophen</td>
+                    <td>Tylenol</td>
+                    <td>050607191508</td>
+                    <td>500mg</td>
+                    <td>Pain Relief</td>
+                    <td>Oral</td>
+                </tr>
+                <tr>
+                    <td>Codeine</td>
+                    <td>Tylenol with Codeine</td>
+                    <td>050607191511</td>
+                    <td>15mg, 30mg</td>
+                    <td>Pain Relief</td>
+                    <td>Oral</td>
+                </tr>
+
+                <!-- Antibiotic Medications -->
+                <tr>
+                    <td>Amoxicillin</td>
+                    <td>Amoxil</td>
+                    <td>000599042030</td>
+                    <td>250mg, 500mg</td>
+                    <td>Antibiotic</td>
+                    <td>Oral</td>
+                </tr>
+                <tr>
+                    <td>Ciprofloxacin</td>
+                    <td>Cipro</td>
+                    <td>000644861020</td>
+                    <td>250mg, 500mg</td>
+                    <td>Antibiotic</td>
+                    <td>Oral</td>
+                </tr>
+
+                <!-- Add more medications as needed -->
+            </tbody>
+        </table>
     </section>
 
     <footer>
