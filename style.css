@@ -1,86 +1,79 @@
-/* Reset default spacing */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    background: #f0f7ff;
-    color: #333;
-    text-align: center;
+    font-family: 'Arial', sans-serif;
     padding: 20px;
-}
-
-header {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    color: white;
-    padding: 30px 10px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    background-color: #e6f2f7; /* soft healthcare blue */
+    text-align: center;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-header p {
-    font-size: 1.1rem;
-    font-style: italic;
+    color: #0b5394; /* dark blue */
 }
 
 nav ul {
     list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 20px 0;
     padding: 0;
 }
 
-nav a {
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav ul li a {
     text-decoration: none;
-    background-color: #0077b6;
     color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+    background-color: #0b5394;
+    padding: 10px 15px;
+    border-radius: 5px;
 }
 
-nav a:hover {
-    background-color: #023e8a;
-}
-
-section {
-    margin-top: 20px;
-}
-
-.illustration {
-    max-width: 300px;
-    width: 100%;
-    margin: 20px auto;
+nav ul li a:hover {
+    background-color: #073763;
 }
 
 footer {
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: #666;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
 }
 
-/* Mobile-friendly */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 2rem;
-    }
+.medication-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 500px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
 
-    nav ul {
-        flex-direction: column;
-    }
+.medication-table th, .medication-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
 
-    nav a {
-        width: 100%;
-    }
+.medication-table th {
+    background-color: #d9edf7;
+    color: #31708f;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #0b5394;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #073763;
+}
+
+.illustration {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.result {
+    margin-top: 20px;
 }
