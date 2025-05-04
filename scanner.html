@@ -1,79 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MediSure Barcode Scanner</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
-<script src="medications.js"></script> 
+<head>
+    <meta charset="UTF-8">
+    <title>Start Scanner - MediSure</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>MediSure</h1>
+        <p>Makakasiguradong gamot ay laging tama--A Barcode Based Solution for Medication Safety</p>
+    </header>
 
-<header>
-    <h1>MediSure Barcode Scanner</h1>
-    <p>Scan a barcode to find medication details.</p>
-</header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="medications.html">Medication Database</a></li>
+            <li><a href="comparison.html">Comparison Section</a></li>
+        </ul>
+    </nav>
 
-<button onclick="startScanner()">Start Scanner</button>
-<div id="scanner-container" style="width: 100%; max-width: 400px; margin: auto; margin-top: 20px;"></div>
+    <h2>Scan Medication Barcode</h2>
+    <button onclick="startScanner()">Start Scanner</button>
+    <div id="scanner-container"></div>
+    <div id="result"></div>
 
-<div class="result" id="result"></div>
+    <!-- Load medication data first -->
+    <script src="medication.js"></script>
+    <!-- Then load scanner logic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script src="scanner.js"></script>
 
-<footer>
-    <p>&copy; 2025 MediSure. All rights reserved.</p>
-</footer>
-
-<script>
-function startScanner() {
-    document.getElementById('result').innerText = "Initializing scanner... Please allow camera access.";
-
-    Quagga.init({
-        inputStream: {
-            name: "Live",
-            type: "LiveStream",
-            target: document.querySelector('#scanner-container'),
-            constraints: {
-                facingMode: "environment" // Rear camera
-            }
-        },
-        decoder: {
-            readers: ["ean_reader", "code_128_reader"] // Support for EAN and Code128 barcodes
-        },
-        locate: true // Try to locate barcode in image automatically
-    }, function(err) {
-        if (err) {
-            console.error(err);
-            document.getElementById('result').innerText = "Error initializing scanner.";
-            return;
-        }
-        document.getElementById('result').innerText = "Scanner started — point your camera at a barcode.";
-        Quagga.start();
-    });
-
-    Quagga.onDetected(function(data) {
-        const barcode = data.codeResult.code;
-        const medication = medicationDatabase[barcode];
-
-        if (medication) {
-            displayMedicationInfo(medication);
-        } else {
-            document.getElementById('result').innerText = `Scanned code: ${barcode}\nMedication not found in database.`;
-        }
-
-        Quagga.stop();
-    });
-}
-
-function displayMedicationInfo(medication) {
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = `
-        <h2>${medication.name} (${medication.brand})</h2>
-        <p><strong>Dosage:</strong> ${medication.dosage}</p>
-        <p><strong>Indication:</strong> ${medication.indication}</p>
-        <p><strong>Route:</strong> ${medication.route}</p>
-    `;
-}
-</script>
-
+    <footer>
+        <p>&copy; 2025 MediSure. All rights reserved.</p>
+    </footer>
 </body>
 </html>
