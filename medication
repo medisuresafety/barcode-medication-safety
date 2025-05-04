@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication List</title>
+</head>
+<body>
+    <h1>Medication List</h1>
+
+    <ul id="medication-list">
+        <li><a href="#medication1" id="med1" data-id="123456">Aspirin (ID: 123456)</a></li>
+        <li><a href="#medication2" id="med2" data-id="234567">Paracetamol (ID: 234567)</a></li>
+        <li><a href="#medication3" id="med3" data-id="345678">Ibuprofen (ID: 345678)</a></li>
+        <!-- Added Carvedilol (Carvid) -->
+        <li><a href="#medication4" id="med4" data-id="480778841769">Carvedilol (Carvid) (ID: 480778841769)</a></li>
+    </ul>
+
+    <!-- Medication Details -->
+    <div id="medication1">
+        <h2>Aspirin</h2>
+        <p>Details about Aspirin...</p>
+    </div>
+
+    <div id="medication2">
+        <h2>Paracetamol</h2>
+        <p>Details about Paracetamol...</p>
+    </div>
+
+    <div id="medication3">
+        <h2>Ibuprofen</h2>
+        <p>Details about Ibuprofen...</p>
+    </div>
+
+    <!-- Added Carvedilol (Carvid) details -->
+    <div id="medication4">
+        <h2>Carvedilol (Carvid)</h2>
+        <p>Carvedilol is a medication used to treat high blood pressure and heart failure.</p>
+    </div>
+
+</body>
+</html>
