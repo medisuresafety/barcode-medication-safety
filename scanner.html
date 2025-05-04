@@ -61,6 +61,7 @@ function startScanner() {
         const code = data.codeResult.code;
         Quagga.stop(); // Stop scanner after detection
 
+        // Check if medication exists in medications.js
         if (medications[code]) {
             const med = medications[code];
             const medInfo = `
