@@ -3,39 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Scanner</title>
+    <title>MediSure Barcode Scanner</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script src="medications.js"></script> <!-- Import the medication database -->
 </head>
 <body>
     <header>
-        <h1>Start Barcode Scanner</h1>
-        <p>Scan a medication barcode to find its details.</p>
+        <h1>MediSure Barcode Scanner</h1>
+        <p>Scan a barcode to find medication details.</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="medications.html">Medication List</a></li>
-            <li><a href="comparison.html">Comparison Section</a></li>
-        </ul>
-    </nav>
-
-    <section id="scanner">
-        <button onclick="startScanner()">Start Scanner</button>
-        <div id="scanner-container"></div>
-        <div id="scanner-result"></div>
-    </section>
+    <div id="scanner-container"></div>
+    <div class="result" id="result"></div>
 
     <footer>
         <p>&copy; 2025 MediSure. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
     <script>
         function startScanner() {
-            document.getElementById('scanner-result').innerText = "Scanning...";
+            document.getElementById('result').innerText = "Scanning...";
+
             Quagga.init({
-                inputStream: { name: "Live", type: "LiveStream", target: document.querySelector('#scanner-container'), constraints: { facingMode: "environment" } },
+                inputStream: {
+                    name: "Live",
+                    type: "LiveStream",
+                    target: document.querySelector('#scanner-container'),
+                    constraints: { facingMode: "environment" }
+                },
                 decoder: { readers: ["code_128_reader", "ean_reader"] }
             }, function(err) {
                 if (err) { console.error(err); return; }
@@ -43,13 +39,33 @@
             });
 
             Quagga.onDetected(function(data) {
-                const code = data.codeResult.code;
-                document.getElementById('scanner-result').innerText = `Scanned code: ${code}`;
-                Quagga.stop();
-                // Example: Redirect to medication details
-                window.location.href = `medications.html#${code}`;
+                const barcode = data.codeResult.code;
+                const medication = medicationDatabase[barcode];
+
+                if (medication) {
+                    displayMedicationInfo(medication);
+                } else {
+                    document.getElementById('result').innerText = "Medication not found in database.";
+                }
+
+                Quagga.stop(); // Stop the scanner after detection
             });
         }
+
+        function displayMedicationInfo(medication) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h2>${medication.name} (${medication.brand})</h2>
+                <p><strong>Dosage:</strong> ${medication.dosage}</p>
+                <p><strong>Indication:</strong> ${medication.indication}</p>
+                <p><strong>Route:</strong> ${medication.route}</p>
+            `;
+        }
+
+        // Automatically start the scanner when the page loads
+        window.onload = function() {
+            startScanner();
+        };
     </script>
 </body>
 </html>
